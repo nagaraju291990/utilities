@@ -1,4 +1,4 @@
-#Read from postedit db and then insert sentence wise data into concordance db
+#Read from postedit db and then insert sentence wise data into concordance database
 
 import re
 from pymongo import MongoClient
