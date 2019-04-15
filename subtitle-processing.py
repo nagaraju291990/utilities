@@ -1,4 +1,5 @@
 #Processing a srt file for subtitle text extraction
+#pip3 install pysrt
 
 import os
 import sys
@@ -47,10 +48,10 @@ def extractText():
 	out_file=open('output_file'+os.path.basename(srtfilename),"w")
 	c = 1
 	for sub in subs:
-		out_file.write("[SUBTITLE"+str(c)+"]\n" + sub.text+"\n")
+		out_file.write("[SUBTITLE-"+str(c)+"]\n" + sub.text+"\n")
 		c = c+1
 		#print(subs.text)
-	msg=messagebox.showinfo( "Text Extarction ", "Text file has been Created Successfully")
+	msg=messagebox.showinfo( "Text Extraction ", "Text file has been Created Successfully")
 
 
 def openFileDialog():
