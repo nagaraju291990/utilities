@@ -9,7 +9,7 @@ import os
 import sys
 import pysrt
 
-parser = ArgumentParser(description='Extract text from srt file\n\r'+
+parser = ArgumentParser(description='Extract text from srt file \n\r'+
 						"How to Run?\n" +
 						"python3 " + sys.argv[0] + " -i=file.srt " + "-o=all"
 						)
