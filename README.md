@@ -11,6 +11,8 @@ Some utiltities
 	pet2concordance.py - postedit to concordance db
 	subtitle-processing.py - extract text from .srt file, create four type of files[placeholder, new lines, without new lines, story mode]
 	data_range_API2concordance.py - parsing API response 
+	list_match.py	- find and replace from a file(having mapping words) with the input file to be replaced
+	ngram-generator.py	- Generate n grams frequency on an input text file
 
 ### 201903301150
 	mongo_restore.py/sh - restoring mongo collections one by one
