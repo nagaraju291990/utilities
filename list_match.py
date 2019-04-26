@@ -31,15 +31,15 @@ for line in lines:
 	if(line != ""):
 		for key in keys:
 			#my_regex = key + r"\b"
-			my_regex = r"([\"\'\( \/])" + key + r"([ ,\.!\"।\'\/)])"
+			my_regex = r"([,\"\'\( \/])" + key + r"([ ,\.!\"।\'\/)])"
 			#print(my_regex)
 			if((re.search(my_regex, line, re.IGNORECASE|re.UNICODE))):
 				line = re.sub(my_regex, r"\1" + word_hash[key]+r"\2",line,flags=re.IGNORECASE|re.UNICODE|re.MULTILINE)
 				#print("iam :1",line)
-			if((re.search(key + r"$", line, re.IGNORECASE|re.UNICODE))):
+			if((re.search(r"([,\"\'\( \/])" + key + r"$", line, re.IGNORECASE|re.UNICODE))):
 				line = re.sub(key+r"$", word_hash[key],line,flags=re.IGNORECASE|re.UNICODE|re.MULTILINE)
 				#print("iam :2",line)
-			if((re.search(r"^" + key, line, re.IGNORECASE|re.UNICODE))):
+			if((re.search(r"^" + key + r"([ ,\.!\"।\'\/)])", line, re.IGNORECASE|re.UNICODE))):
 				#print(line)
 				line = re.sub(r"^" + key, word_hash[key],line,flags=re.IGNORECASE|re.UNICODE|re.MULTILINE)
 				#print("iam :",line)
