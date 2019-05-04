@@ -64,8 +64,8 @@ def extractText(i):
 		if(output_type == "4" or output_type == "all"):
 				out_file4.write(sub.text + " ")	#story mode
 		if(t == "yes"):
-				timeline_file.write("[SUBTITLE-"+str(c)+"]\n" + str(sub.start)+ " --> " + str(sub.end)+"\n") #with placeholder
-
+				#timeline_file.write("[SUBTITLE-"+str(c)+"]\n" + str(sub.start)+ " --> " + str(sub.end)+"\n") #with placeholder
+				timeline_file.write( str(sub.start)+ " --> " + str(sub.end)+"\n") #with placeholder
 		c = c + 1
 		#print(subs.text)
 	print("Subtitle processed Successfully!")
