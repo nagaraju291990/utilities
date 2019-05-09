@@ -53,7 +53,11 @@ def generateSRT(i,t):
 		outfp.write(str(tl_iterator+1)+"\n")
 		outfp.write(tlcontent[tl_iterator])
 		for j in range(n):
-			print(j)
+			#print(j)
+			try:	#to handle list index out of range error
+				srtcontent[lang_iterator]
+			except:
+				break
 			outfp.write(srtcontent[lang_iterator])
 			lang_iterator = lang_iterator + 1
 		outfp.write("\n")
