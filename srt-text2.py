@@ -1,3 +1,4 @@
+#This script converts srt file into text format like text.....[SUB____1]....text [SUB____2]
 from argparse import ArgumentParser
 import re
 import os

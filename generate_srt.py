@@ -55,7 +55,7 @@ def generateSRT(i, t):
 		l = re.sub(r"\[SUB____(\d+)\] ", r"\n[SUB____\1]\n", l, re.MULTILINE)
 		#l = l.strip()
 		out.append(l)
-		print (l)
+		#print (l)
 	out1 = "\n".join(out)
 	out = out1.split("\n")
 	#print(out)
