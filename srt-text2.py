@@ -1,4 +1,5 @@
-#This script converts srt file into text format like text.....[SUB____1]....text [SUB____2]
+#This script converts srt file into text format like text.....[SUB____1]....text [SUB____2] 
+#and also generates a timeline file required later for processing
 from argparse import ArgumentParser
 import re
 import os
