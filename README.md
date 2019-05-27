@@ -19,13 +19,9 @@ Some utiltities
 	pet2concordance.py - Extract from postedit db and insert into conordancedb
 
 ### 201905091439
-	generate_srt.py - generate srt file from lang text file and timeline file
 	docxtable2text.py - convert table text in doc/docx into tab seperated text 
 
 ### 201905241149
-	srt-text.py	-	generate text from srt file
-	srt-text2.py -  generate text from srt file whose output is given as input to sent_tokenize.py 
-	sent_tokenize.py - given an input file tokenizes the lines in the file
 	generate_docx.py - generate docx file from txt file
 
 
