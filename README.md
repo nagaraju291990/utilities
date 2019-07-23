@@ -14,6 +14,10 @@ Some utiltities
 	list_match.py	- find and replace from a file(having mapping words) with the input file to be replaced
 	ngram-generator.py	- Generate n grams frequency on an input text file
 
+### 201907231515
+	tmx2tab.py - Extract text from tmx into tab seperated format
+	pdf2text/doc - Extract text from pdf into doc/txt
+
 ### 201903301150
 	mongo_restore.py/sh - restoring mongo collections one by one
 	pet2concordance.py - Extract from postedit db and insert into conordancedb
