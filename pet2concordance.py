@@ -10,7 +10,7 @@ client = MongoClient('mongodb://localhost:27017/')
 #database
 db = client['postedit-db-0-4']
 
-concordancedb = client['concordancedbtest']
+concordancedb = client['concordancedb']
 concordance_coll = concordancedb['concordance']
 
 collections = db.list_collection_names()
@@ -84,7 +84,7 @@ for coll in collections:
 		except:
 			commit_status = False
 
-		#key = 
+		#key =
 		if(commit_status == True ):
 			review_hash[str(taskid) + lang_pair + domain] = 1
 			#for src_para,rev_para in zip(src_story, rev_story):
