@@ -29,3 +29,10 @@ Some utiltities
 	generate_docx.py - generate docx file from txt file
 
 
+### 2019101710434
+	bulk_pdf_extract_api.py - extract text from pdf using tikka from input folder
+	create_srt.py - create srt file from transcription file with timeline
+	prime.py - script to determine prime number
+	vlc_mp4_flac.py -  convert mp4 to flac files using vlc command from input folder to output folder
+	
+	
