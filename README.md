@@ -37,3 +37,7 @@ Some utiltities
 	
 ### 20191181616
 	normalizer.py to remove white spaces, tabs, new lines
+
+### 20191181704
+	remove_rich_text.py to remove tags and text between tags from rich text transcription file.
+
