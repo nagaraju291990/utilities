@@ -35,4 +35,5 @@ Some utiltities
 	prime.py - script to determine prime number
 	vlc_mp4_flac.py -  convert mp4 to flac files using vlc command from input folder to output folder
 	
-	
+### 20191181616
+	normalizer.py to remove white spaces, tabs, new lines
