@@ -43,10 +43,14 @@ fp.close()
 
 
 for line in lines:
+	line = re.sub(r'>', '> ', line, flags=re.MULTILINE)
 	if(flag == 'y'):
 		line = striphtmlDelete(line)
 	else:
 		line = striphtml(line)
 	
+	line = re.sub(r'^ *',"",line,flags=re.MULTILINE)
+	line = re.sub(r' *$',"",line,flags=re.MULTILINE)
+	line = re.sub(r' +', " ",line,flags=re.MULTILINE)
 	print(line)
 	#print(line2)

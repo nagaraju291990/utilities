@@ -1,14 +1,15 @@
 #Read from postedit db and then insert sentence wise data into concordance database
+#mongo --host 10.4.22.151 --port 27017 -u "useradmin" --authenticationDatabase "admin" -p "cohondob@laila123"
 
 import re
 from pymongo import MongoClient
 
 #connection
 client = MongoClient()
-client = MongoClient('mongodb://localhost:27017/')
+client = MongoClient('mongodb://useradmin:cohondob%40laila123@10.4.22.151:27017/')
 
 #database
-db = client['postedit-db-0-4']
+db = client['postedit-db-0-4-7']
 
 concordancedb = client['concordancedb']
 concordance_coll = concordancedb['concordance']
@@ -55,7 +56,7 @@ tgt_sent_array = []
 i=0
 j=0
 review_hash = {}
-
+fp = open("data2.txt","w")
 #review collections - comeplte flag and review commited
 for coll in collections:
 	#print(coll)
@@ -79,13 +80,23 @@ for coll in collections:
 		rev_story = review_document["review_story"]
 		domain = review_document["domain"]
 
+		if 'client' in review_document:
+			client = review_document["client"]
+		else:
+			client = "noname"
+
+		if 'project' in review_document:
+			project = review_document["project"]
+		else:
+			project = "noname"
+
 		try:
 			commit_status = review_document["review_commit_status"]
 		except:
 			commit_status = False
-
+		#print(type(commit_status))
 		#key =
-		if(commit_status == True ):
+		if(commit_status == True):
 			review_hash[str(taskid) + lang_pair + domain] = 1
 			#for src_para,rev_para in zip(src_story, rev_story):
 			#print(len(src_story),len(rev_story))
@@ -107,6 +118,7 @@ for coll in collections:
 					tgt_sent_array.append(current_rev_sent)
 					#print(src_sent_array[j],current_rev_sent,sep='\t')
 					concordance_coll.insert({"id":i,"posteditor":posteditor,"reviewer":reviewer,"manager":manager,"creationtime":creationtime,"source":src_sent_array[j],"target":current_rev_sent,"lang_pair":lang_pair,"jobId":taskid})
+					fp.write(src_sent_array[j] +"\t" + current_rev_sent +"\t" + lang_pair +"\t" + str(taskid) + "\t" + client + "\t" + project + "\n")
 					j = j + 1
 					#print(current_src_sent,current_rev_sent)
 	print(i,j)
@@ -135,6 +147,16 @@ for coll in collections:
 		rev_story = review_document["postedited_targetstory"]
 		domain = review_document["domain"]
 
+		if 'client' in review_document:
+			client = review_document["client"]
+		else:
+			client = "noname"
+
+		if 'project' in review_document:
+			project = review_document["project"]
+		else:
+			project = "noname"
+
 		try:
 			commit_status = review_document["pet_commit_status"]
 		except:
@@ -146,7 +168,7 @@ for coll in collections:
 			complete_flag = False
 
 		key = str(taskid) + lang_pair + domain
-		if(commit_status == True and complete_flag == True and key not in review_hash):
+		if(commit_status == True and key not in review_hash):
 			#for src_para,rev_para in zip(src_story, rev_story):
 			#print(len(src_story),len(rev_story))
 			for src_para in src_story:
@@ -167,7 +189,10 @@ for coll in collections:
 					tgt_sent_array.append(current_rev_sent)
 					#print(src_sent_array[j],current_rev_sent,sep='\t')
 					concordance_coll.insert({"id":i,"posteditor":posteditor,"reviewer":reviewer,"manager":manager,"creationtime":creationtime,"source":src_sent_array[j],"target":current_rev_sent,"lang_pair":lang_pair,"jobId":taskid})
+					fp.write(src_sent_array[j] +"\t" + current_rev_sent +"\t" + lang_pair +"\t" + str(taskid) + "\t" + client + "\t" +  project + "\n")
 					j = j + 1
 					#print(current_src_sent,current_rev_sent)
 	print(i,j)
+
+fp.close()
 #print("Total",i,j)
