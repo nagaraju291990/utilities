@@ -26,6 +26,8 @@ for index,row in df.iterrows():
 	tgt = row[1]
 	tgt = re.sub(r'( +)?-( +)?', '-', tgt)
 	words = re.findall(r'[\u0900-\u09FF]+(?:-[\u0900-\u09FF]+)+', tgt)
+	words = list(set(words))
+	words = [re.sub(r'[\?\u0964\,\.,\[\]\;:\'\"]', '', w) for w in words if w]
 	words = ", ".join(words)
 	hyphen_words.append(words)
 	#for word in words:
