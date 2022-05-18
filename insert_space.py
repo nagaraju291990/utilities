@@ -22,4 +22,6 @@ fp1.close() # Close file
 
 for line in lines:
 	line = re.sub(r'([a-z])([A-Z])', r'\1 \2', line)
+	line = re.sub(r'([0-9])([A-z])', r'\1 \2', line)
+	line = re.sub(r' [A-Z]', lambda m: m.group(0).lower(), line)
 	print(line)
