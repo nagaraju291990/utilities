@@ -78,14 +78,13 @@ L1.pack( pady = 0)
 
 E1  =  Entry(frame, bd  = 1,bg = "whitesmoke",fg = "black")
 E1.pack(pady = 5)
-"""
 
+"""
 L2  =  Label(frame,text = "Enter No languages file have",font = "serif 12")
 L2.pack()
 
 E2  =  Entry(frame, bd  = 1,bg = "whitesmoke",fg = "black")
 E2.pack( pady = 5)
-
 
 
 

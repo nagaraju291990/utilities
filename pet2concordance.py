@@ -6,10 +6,10 @@ from pymongo import MongoClient
 
 #connection
 client = MongoClient()
-client = MongoClient('mongodb://useradmin:cohondob%40laila123@10.4.22.151:27017/')
+#client = MongoClient('mongodb://useradmin:cohondob%40laila123@10.4.22.151:27017/')
 
 #database
-db = client['postedit-db-0-4-7']
+db = client['postedit-db-0-4']
 
 concordancedb = client['concordancedb']
 concordance_coll = concordancedb['concordance']
@@ -70,7 +70,11 @@ for coll in collections:
 	review_cursor = coll.find()
 	#print(review_cursor)
 	for review_document in review_cursor:
-		taskid = review_document["_id"]
+		#taskid = review_document["taskid"]
+		if 'taskid' in review_document:
+			taskid = review_document["taskid"]
+		else:
+			taskid = review_document['_id']
 		reviewer = review_document["user"]
 		posteditor = review_document["postedited_by"]
 		lang_pair = review_document["lang_pair"]
@@ -96,7 +100,7 @@ for coll in collections:
 			commit_status = False
 		#print(type(commit_status))
 		#key =
-		if(commit_status == True):
+		if(commit_status == True and re.search(r'(2020|2019|2021)', creationtime)):
 			review_hash[str(taskid) + lang_pair + domain] = 1
 			#for src_para,rev_para in zip(src_story, rev_story):
 			#print(len(src_story),len(rev_story))
@@ -137,7 +141,11 @@ for coll in collections:
 	review_cursor = coll.find()
 	#print(review_cursor)
 	for review_document in review_cursor:
-		taskid = review_document["_id"]
+		#taskid = review_document["taskid"]
+		if 'taskid' in review_document:
+			taskid = review_document["taskid"]
+		else:
+			taskid = review_document['_id']
 		reviewer = ""
 		posteditor = review_document["user"]
 		lang_pair = review_document["lang_pair"]
@@ -168,7 +176,7 @@ for coll in collections:
 			complete_flag = False
 
 		key = str(taskid) + lang_pair + domain
-		if(commit_status == True and key not in review_hash):
+		if(commit_status == True and key not in review_hash and re.search(r'(2020|2019|2021)', creationtime)):
 			#for src_para,rev_para in zip(src_story, rev_story):
 			#print(len(src_story),len(rev_story))
 			for src_para in src_story:
